@@ -1,0 +1,72 @@
+<div class="chatbox">
+	<div class="chathead">
+		<div class="title"><span>ChatRoom</span></div>
+	</div>
+	
+	<div class="chatbody">
+		<!-- 左边 -->
+		<div class="chatbody_left">	
+			<div class="onlineUserList">
+				
+			</div>	
+		</div>
+		
+		<!-- 中间 -->
+		<div class="chatbody_center">
+			<div class="chatbody_center_msgboard">
+				
+				
+			</div>
+			
+			
+			<div class="chatbody_center_inputbox">
+				<div class="inputboard">
+					<textarea name="msg" class="msg"></textarea>
+				</div>
+				<div class="sendbtnbox">
+					<button type="button" class="btn sendbtn">Send</button>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 右边 -->
+		<div class="chatbody_right">
+			<div class="userpic act_gotoUserCenter">
+				<img alt="头像" src="{$TV.currUserInfo.image}">
+				<input id="currUserId" type="hidden" value="{$TV.currUser.userid}">
+				<input id="currUserName" type="hidden" value="{$TV.currUser.username}">
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+		
+	<div class="chatfoot">
+			
+	</div>
+</div>
+	
+
+
+<!-- 在线用户模板 -->
+<div id="tpl_onlineUser" style="display: none;">
+	<div class="onlineUser">
+		<div class="onlineUserPic">
+			<img alt="头像" src="">
+		</div>
+		<div class="onlineUserInfo">
+			<span></span>
+		</div>
+		<div class="clear"></div>							
+	</div>	
+</div>
+	
+	
+
+
+<script src="{V_SERVER_HOST}/static/js/core.js"></script>
+<script>
+	$(document).ready(function(){
+				
+		MainController.init();
+	})		
+</script>

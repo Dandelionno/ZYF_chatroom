@@ -1,0 +1,55 @@
+
+		<div class="mainContainer">
+			<div class="loginBox">
+				<div class="logo">ChatRoom</div>
+				<div class="inputItem">
+					<b class="adon fa fa-user-circle-o"></b>
+					<input type="text" name="username" class="username" value="{if isset($TV.userInfo_rem['username'])} {$TV.userInfo_rem.username} {/if}">
+				</div>
+				<div class="inputItem">
+					<b class="adon fa fa-lock"></b>
+					<input type="text" name="pwd" class="pwd" value="{if $TV.isRemember && isset($TV.userInfo_rem['pwd'])} {$TV.userInfo_rem['pwd']} {/if}">
+				</div>
+				<div class="rempwd_item">
+					<input type="checkbox" name="rempwd" class="rempwd" {if $TV.isRemember}checked{/if}>
+					<span>记住密码</span>
+				</div>
+				<div class="inputItem">
+					<button type="button" class="btn login_btn">登录</button>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".login_btn").on('click', function(){
+					var username = $(".username").val();
+					var pwd = $(".pwd").val();
+					var rempwd = $('.rempwd').prop("checked");
+					
+					var data = {
+						username: username,
+						pwd: pwd,
+						rempwd: rempwd==true?'1':'0'
+					}
+					console.log(data)
+					$.ajax({
+	                    type:"post",
+	    				url: "?act=login",
+	    				data: data,
+	    				dataType: "json",
+	    				success: function(result)
+	    				{
+	                        if(result.result == true)
+	                        {
+	                        	location.href = result.data.url
+	                        }else{
+								alert(result.data)
+	                        }	                        
+	                    }
+	                })
+				});
+			})
+		</script>
+	</body>
+</html>
